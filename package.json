@@ -2,9 +2,9 @@
   "name": "tapp",
   "version": "0.1.0",
   "description": "The start of a beautiful tournament organizer",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
@@ -16,10 +16,20 @@
     "url": "https://github.com/loomismeister/tapp/issues"
   },
   "homepage": "https://github.com/loomismeister/tapp#readme",
+  "private": true,
   "dependencies": {
     "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.1",
+    "debug": "^2.2.0",
+    "errorhandler": "^1.4.3",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "jade": "^1.11.0",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "serve-favicon": "^2.3.0"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "supervisor": "*"
   }
 }
