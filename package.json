@@ -1,0 +1,19 @@
+{
+  "name": "tapp",
+  "version": "0.1.0",
+  "description": "The start of a beautiful tournament organizer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/loomismeister/tapp.git"
+  },
+  "author": "Mike Loomis, Will Snyder",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/loomismeister/tapp/issues"
+  },
+  "homepage": "https://github.com/loomismeister/tapp#readme"
+}
