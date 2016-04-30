@@ -4,7 +4,8 @@
   "description": "The start of a beautiful tournament organizer",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "supervisor app.js",
+    "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -30,6 +31,8 @@
   },
   "devDependencies": {
     "mocha": "*",
+    "chai": "*",
+    "supertest": "*",
     "supervisor": "*"
   }
 }

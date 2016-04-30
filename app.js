@@ -21,7 +21,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'dragon.ico')));
 app.use(logger('dev'));
 app.use(session({ resave: true,
                   saveUninitialized: true,
@@ -63,10 +63,8 @@ var server = http.createServer(app);
 
 app.set('port', process.env.PORT || 3000);
 
-server.listen(app.get('port'), function() {
-  console.log('Express Tapp server listening on port' + app.get('port'));
-})
-
 var server = app.listen(app.get('port'), function() {
-  debug('Express server listening on port ' + server.address().port);
+  debug('Tapp Express server listening on port ' + server.address().port);
 });
+
+module.exports = server
