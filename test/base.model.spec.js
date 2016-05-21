@@ -1,5 +1,4 @@
-var request = require('supertest')
-  , expect = require('chai').expect;
+var expect = require('chai').expect;
 
 var Model = require("../models/Base"),
   dbMockup = {};

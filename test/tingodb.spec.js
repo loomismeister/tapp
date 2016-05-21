@@ -1,5 +1,4 @@
-var request = require('supertest')
-  , expect  = require('chai').expect;
+var expect  = require('chai').expect;
 
 describe("TingoDB", function() {
   it("should connect to the embedded db", function(next) {

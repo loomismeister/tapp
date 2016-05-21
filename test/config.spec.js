@@ -1,5 +1,4 @@
-var request = require('supertest')
-  , expect = require('chai').expect;
+var expect = require('chai').expect;
 
 describe("Configuration setup", function() {
     it("should load local configurations", function(next) {
