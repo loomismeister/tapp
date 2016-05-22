@@ -19,6 +19,7 @@ var errorHandler  = require('errorhandler');
 
 var routes        = require('./controllers/index');
 var users         = require('./controllers/users');
+var Admin         = require('./controllers/Admin');
 
 
 
@@ -67,6 +68,15 @@ mongoose.connect('tingodb://' + __dirname + '/data', function(err, db) {
         req.db = db;
         next();
     };
+
+    app.all('/admin*', attachDB, function(req, res, next){
+      Admin.run(req, res, next);
+    });
+
+    app.all('/', attachDB, function(req, res, next){
+      Home.run(req, res, next);
+    });
+
     debug('Successfully connected to tingodb://' + __dirname + '/data');
   }
 });
