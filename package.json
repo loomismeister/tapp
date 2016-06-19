@@ -4,8 +4,8 @@
   "description": "The start of a beautiful tournament organizer",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
-    "watch": "nodemon app.js",
+    "start": "node server.js",
+    "watch": "nodemon server.js",
     "test": "./node_modules/.bin/mocha"
   },
   "repository": {

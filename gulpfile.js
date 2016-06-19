@@ -16,13 +16,13 @@ var sourcemaps = require('gulp-sourcemaps');
 
 var production = process.env.NODE_ENV === 'production';
 
-var dependencies = {
+var dependencies = [
   'alt',
   'react',
   'react-dom',
   'react-router',
   'underscore'
-};
+];
 
 // Combine all JS libraries into a single file for fewer HTTP requests
 gulp.task('vendor', function () {

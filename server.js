@@ -1,3 +1,12 @@
+// Babel ES6/JSX Compiler
+require('babel-register');
+
+var swig = require('swig');
+var React = require('react');
+var ReactDOM = require('react-dom/server');
+var Router = require('react-router');
+var routes = require('./app/routes');
+
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -16,8 +25,6 @@ var bodyParser = require('body-parser');
 var debug = require('debug')('app4');
 var errorHandler = require('errorhandler');
 
-// All environments
-
 app.use(favicon(path.join(__dirname, 'public', 'dragon.ico')));
 app.use(logger('dev'));
 app.use(session({
@@ -32,22 +39,24 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-// error handlers
-
-// development error handler
-// will print stacktrace
-if (app.get('env') === 'development') {
-  app.use(errorHandler());
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function (err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
+app.use(function (req, res) {
+  Router.match({
+    routes: routes.default,
+    location: req.url
+  }, function (err, redirectLocation, renderProps) {
+    if (err) {
+      res.status(500).send(err.message)
+    } else if (redirectLocation) {
+      res.status(302).redirect(redirecLocation.pathname + redirectLocation.search)
+    } else if (renderProps) {
+      var html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
+      var page = swig.renderFile('views/index.html', {
+        html: html
+      });
+      res.status(200).send(page);
+    } else {
+      res.status(404).send('Page Not Found')
+    }
   });
 });
 
@@ -59,14 +68,6 @@ mongoose.connect('tingodb://' + __dirname + '/data', function (err, db) {
       req.db = db;
       next();
     };
-
-    app.all('/admin*', attachDB, function (req, res, next) {
-      Admin.run(req, res, next);
-    });
-
-    app.all('/', attachDB, function (req, res, next) {
-      Home.run(req, res, next);
-    });
 
     debug('Successfully connected to tingodb://' + __dirname + '/data');
   }
