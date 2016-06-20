@@ -60,18 +60,18 @@ app.use(function (req, res) {
   });
 });
 
-mongoose.connect('tingodb://' + __dirname + '/data', function (err, db) {
-  if (err) {
-    console.log('Cannot connect to database');
-  } else {
-    var attachDB = function (req, res, next) {
-      req.db = db;
-      next();
-    };
-
-    debug('Successfully connected to tingodb://' + __dirname + '/data');
-  }
-});
+// mongoose.connect('tingodb://' + __dirname + '/data', function (err, db) {
+//   if (err) {
+//     console.log('Cannot connect to database');
+//   } else {
+//     var attachDB = function (req, res, next) {
+//       req.db = db;
+//       next();
+//     };
+//
+//     debug('Successfully connected to tingodb://' + __dirname + '/data');
+//   }
+// });
 
 var server = http.createServer(app).listen(config.port, function () {
   debug('Tapp Express server listening on port ' + server.address().port)
