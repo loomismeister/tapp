@@ -96,7 +96,6 @@ var App = function (_React$Component) {
         'div',
         null,
         this.props.children,
-        '// ',
         _react2.default.createElement(_Footer2.default, null)
       );
     }

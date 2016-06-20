@@ -74,7 +74,7 @@ app.use(function (req, res) {
 // });
 
 var server = http.createServer(app).listen(config.port, function () {
-  debug('Tapp Express server listening on port ' + server.address().port)
+  console.log('Tapp Express server listening on port ' + server.address().port)
 });
 
 module.exports = server

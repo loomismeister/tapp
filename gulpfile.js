@@ -113,7 +113,7 @@ gulp.task('styles', function () {
     .pipe(less())
     .pipe(autoprefixer())
     .pipe(gulpif(production, cssmin()))
-    .pipe(gulp.dest('public/js'));
+    .pipe(gulp.dest('public/css'));
 });
 
 gulp.task('watch', function () {
