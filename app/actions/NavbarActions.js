@@ -7,14 +7,14 @@ class NavbarActions {
       'updateOnlineUsers',
       'updateAjaxAnimation',
       'updateSearchQuery',
-      'getcharacterCountSuccess',
+      'getCharacterCountSuccess',
       'getCharacterCountFail',
       'findCharacterSuccess',
       'findCharacterFail'
     );
   }
 
-  findCharacter(payload){
+  findCharacter(payload) {
     $.ajax({
       url: '/api/characters/search',
       data: { name: payload.searchQuery }
@@ -29,11 +29,12 @@ class NavbarActions {
   }
 
   getCharacterCount() {
-    $.ajax({ url: '/api/character/count' })
+    $.ajax({ url: '/api/characters/count' })
       .done((data) => {
         this.actions.getCharacterCountSuccess(data)
       })
       .fail((jqXhr) => {
+        console.log("weiner");
         this.actions.getCharacterCountFail(jqXhr)
       });
   }

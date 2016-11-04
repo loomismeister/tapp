@@ -1,6 +1,6 @@
 /*!
- * Bootstrap v3.3.6 (http://getbootstrap.com)
- * Copyright 2011-2015 Twitter, Inc.
+ * Bootstrap v3.3.7 (http://getbootstrap.com)
+ * Copyright 2011-2016 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -1091,7 +1091,6 @@ a:focus {
   text-decoration: underline;
 }
 a:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -2517,7 +2516,6 @@ select[size] {
 input[type="file"]:focus,
 input[type="radio"]:focus,
 input[type="checkbox"]:focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -3000,7 +2998,6 @@ select[multiple].input-lg {
 .btn.focus,
 .btn:active.focus,
 .btn.active.focus {
-  outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
@@ -6713,6 +6710,7 @@ button.close {
   opacity: 0.8;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   filter: alpha(opacity=80);
+  line-height: 1;
 }
 .toast-close-button:hover,
 .toast-close-button:focus {
@@ -6722,6 +6720,11 @@ button.close {
   opacity: 0.4;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=40);
   filter: alpha(opacity=40);
+}
+.rtl .toast-close-button {
+  left: -0.3em;
+  float: left;
+  right: 0.3em;
 }
 /*Additional properties for button version
  iOS requires the button element instead of an anchor tag.
@@ -6794,7 +6797,12 @@ button.toast-close-button {
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
   filter: alpha(opacity=80);
 }
-#toast-container > :hover {
+#toast-container > div.rtl {
+  direction: rtl;
+  padding: 15px 50px 15px 15px;
+  background-position: right 15px center;
+}
+#toast-container > div:hover {
   box-shadow: 0 0 12px #000000;
   opacity: 1;
   -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=100);
@@ -6856,9 +6864,16 @@ button.toast-close-button {
     padding: 8px 8px 8px 50px;
     width: 11em;
   }
+  #toast-container > div.rtl {
+    padding: 8px 50px 8px 8px;
+  }
   #toast-container .toast-close-button {
     right: -0.2em;
     top: -0.2em;
+  }
+  #toast-container .rtl .toast-close-button {
+    left: -0.2em;
+    right: 0.2em;
   }
 }
 @media all and (min-width: 241px) and (max-width: 480px) {
@@ -6866,15 +6881,25 @@ button.toast-close-button {
     padding: 8px 8px 8px 50px;
     width: 18em;
   }
+  #toast-container > div.rtl {
+    padding: 8px 50px 8px 8px;
+  }
   #toast-container .toast-close-button {
     right: -0.2em;
     top: -0.2em;
+  }
+  #toast-container .rtl .toast-close-button {
+    left: -0.2em;
+    right: 0.2em;
   }
 }
 @media all and (min-width: 481px) and (max-width: 768px) {
   #toast-container > div {
     padding: 15px 15px 15px 50px;
     width: 25em;
+  }
+  #toast-container > div.rtl {
+    padding: 15px 50px 15px 15px;
   }
 }
 /* Magnific Popup CSS */

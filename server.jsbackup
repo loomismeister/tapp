@@ -13,9 +13,9 @@ var path = require('path');
 var config = require('./config')();
 var app = express();
 
-// var engine = require('tingodb');
-// var tungus = require('tungus');
-// var mongoose = require('mongoose');
+var engine = require('tingodb');
+var tungus = require('tungus');
+var mongoose = require('mongoose');
 
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -49,7 +49,7 @@ app.use(function (req, res) {
     } else if (redirectLocation) {
       res.status(302).redirect(redirecLocation.pathname + redirectLocation.search)
     } else if (renderProps) {
-      var html = ReactDOM.renderToString(React.createElement(Router.RoutingContext, renderProps));
+      var html = ReactDOM.renderToString(React.createElement(Router.RouterContext, renderProps));
       var page = swig.renderFile('views/index.html', {
         html: html
       });

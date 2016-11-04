@@ -15,21 +15,21 @@ class NavbarStore {
   }
 
   onFindCharacterFail(payload) {
-    paylaod.searchForm.classList.add('shake');
+    payload.searchForm.classList.add('shake');
     setTimeout(() => {
       payload.searchForm.classList.remove('shake');
     }, 1000);
   }
 
-  onUpdateOnlineUsers(data){
+  onUpdateOnlineUsers(data) {
     this.onlineUsers = data.onlineUsers;
   }
 
-  onUpdateAjaxAnimation(className){
-    this.ajaxAnimationsClass = className;
+  onUpdateAjaxAnimation(className) {
+    this.ajaxAnimationClass = className; //fadein or fadeout
   }
 
-  onUpdateSearchQuery(event){
+  onUpdateSearchQuery(event) {
     this.searchQuery = event.target.value;
   }
 

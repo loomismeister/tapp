@@ -12,7 +12,8 @@ class FooterStore {
   }
 
   onGetTopCharactersFail(jqXhr) {
-    toastr.error(jqXhr.responseJson && jqXhr.responseJSON.message || jqXhr.responseText || jqXhr.statusText);
+    // Handle multiple response formats, fallback to HTTP status code number.
+    toastr.error(jqXhr.responseJSON && jqXhr.responseJSON.message || jqXhr.responseText || jqXhr.statusText);
   }
 }
 
