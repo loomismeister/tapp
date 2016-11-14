@@ -34,3 +34,14 @@ node_modules
 
 # bower components
 bower_components
+
+node_modules
+semantic/dist/*
+semantic/gulpfile.js
+semantic/src/definitions
+semantic/src/semantic.less
+semantic/src/theme.less
+semantic/src/themes
+semantic/tasks
+!semantic/dist/semantic.min.css
+!semantic/dist/semantic.min.js
