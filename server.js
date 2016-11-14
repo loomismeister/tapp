@@ -38,6 +38,23 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'semantic/dist')))
+
+var server = http.createServer(app);
+
+var io = require('socket.io')(server);
+var onlineUsers = 0;
+
+io.sockets.on('connection', function(socket) {
+  onlineUsers++;
+
+  io.sockets.emit('onlineUsers', {onlineUsers: onlineUsers});
+
+  socket.on('disconnect', function() {
+    onlineUsers--;
+    io.sockets.emit('onlineUsers', {onlineUsers: onlineUsers });
+  });
+});
 
 app.use(function (req, res) {
   Router.match({
@@ -57,35 +74,6 @@ app.use(function (req, res) {
     } else {
       res.status(404).send('Page Not Found')
     }
-  });
-});
-
-// mongoose.connect('tingodb://' + __dirname + '/data', function (err, db) {
-//   if (err) {
-//     console.log('Cannot connect to database');
-//   } else {
-//     var attachDB = function (req, res, next) {
-//       req.db = db;
-//       next();
-//     };
-//
-//     debug('Successfully connected to tingodb://' + __dirname + '/data');
-//   }
-// });
-
-var server = http.createServer(app);
-
-var io = require('socket.io')(server);
-var onlineUsers = 0;
-
-io.sockets.on('connection', function(socket) {
-  onlineUsers++;
-
-  io.sockets.emit('onlineUsers', {onlineUsers: onlineUsers});
-
-  socket.on('disconnect', function() {
-    onlineUsers--;
-    io.sockets.emit('onlineUsers', {onlineUsers: onlineUsers });
   });
 });
 

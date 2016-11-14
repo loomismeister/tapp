@@ -14,6 +14,10 @@ var watchify = require('watchify');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 
+// require tasks as dependencies
+var watch = require('./semantic/tasks/watch');
+var build = require('./semantic/tasks/build');
+
 var production = process.env.NODE_ENV === 'production';
 
 var dependencies = [
@@ -39,6 +43,9 @@ gulp.task('vendor', function() {
     .pipe(gulpif(production, uglify({ mangle: false })))
     .pipe(gulp.dest('public/js'));
 });
+
+gulp.task('watch-ui', 'Watch UI for Semantic UI', watch);
+gulp.task('build-ui', 'Build UI for Semantic UI', build);
 
 /*
  |--------------------------------------------------------------------------
@@ -120,5 +127,5 @@ gulp.task('watch', function() {
   gulp.watch('app/stylesheets/**/*.less', ['styles']);
 });
 
-gulp.task('default', ['styles', 'vendor', 'browserify-watch', 'watch']);
+gulp.task('default', ['styles', 'vendor', 'browserify-watch', 'watch', 'watch-ui']);
 gulp.task('build', ['styles', 'vendor', 'browserify']);
