@@ -32,6 +32,7 @@
     "colors": "^1.1.2",
     "compression": "^1.6.0",
     "cookie-parser": "^1.4.3",
+    "d3": "^4.3.0",
     "errorhandler": "^1.4.3",
     "express": "^4.13.3",
     "express-session": "^1.14.2",

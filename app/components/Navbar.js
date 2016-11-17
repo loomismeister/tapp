@@ -1,5 +1,4 @@
 import React from 'react';
-import {Link} from 'react-router';
 import NavbarStore from '../stores/NavbarStore';
 import NavbarActions from '../actions/NavbarActions';
 
@@ -25,24 +24,14 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <nav className='navbar navbar-default navbar-static-top'>
-      <div className="ui secondary pointing menu">
+      <div className="ui pointing menu">
         <a className="item">
-          Home
+          Stalls
         </a>
         <a className="item">
-          Messages
+          Log
         </a>
-        <a className="item">
-          Friends
-        </a>
-        <div className="right menu">
-          <a className="ui item active">
-          Logout
-          </a>
-        </div>
       </div>
-      </nav>
     );
   }
 }

@@ -1,6 +1,5 @@
-import React from 'react';
+var React = require('react');
 import Navbar from './Navbar';
-import Footer from './Footer';
 
 class App extends React.Component {
   render() {
